@@ -3,9 +3,12 @@
 Mentors:  Mania Abdi (mania.abdi287@gmail.com), Raja Sambasivan (rrs@bu.edu), Peter Portante (pportant@redhat.com)
 
 Golsana Ghaemi
+
 Bowen Song (sbowen@bu.edu)
-Shivani Singh
+
 Oindrilla Chatterjee
+
+Aditya Singh
 
 Useful skills:
 C, C++, Python
