@@ -57,7 +57,7 @@ its performance, reliability and scalability with its novel approach
 towards metadata and improvements to file system principles. A Ceph
 Storage Cluster requires at least one Ceph Monitor, Ceph Manager, and
 Ceph OSD (Object Storage Daemon). The Ceph Metadata Server is also
-required when running Ceph Filesystem(CephFS) clients [3].The
+required when running Ceph Filesystem(CephFS) clients[3]. The
 novelty in distributing metadata workload is dependent on object-based
 storage which allows direct communication between storage unit and
 client.
@@ -69,7 +69,7 @@ fail recovery. Beside Ceph specific interface (RADOS), there are three
 other standard interfaces that work with RADOS(called as clients):
 CephFS for handling POSIX, Rados Block Device(RBD) for handling images
 (and virtual machines), and Radios Gateway (RGW) for handling REST API
-requests. [4]
+requests.[4]
 
 The importance of Ceph is in its advancement, its scalability and the
 volume of acceptance from the industry. Due to its importance, it
@@ -82,14 +82,14 @@ time till the time that is completed. The default tracing tool for ceph
 is "Ceph Blkin" which is considered as a naive one and is going to be
 replaced by Jaeger. The effort is to better study the anomaly,
 steady-state problem, distributed profiling, and resource attribute
-within the system [5].
+within the system[5].
 
 Blkin Tracing System
 --------------------
 
 Blkin is a library which follows the tracing semantics of Google's
 Dapper. It allows us to trace applications using LTTng, an open source
-tracing framework for Linux [6]. The major drawbacks of Blkin
+tracing framework for Linux[6]. The major drawbacks of Blkin
 is its offline tracing (i.e. for tracing Ceph using Blkin, it should be
 started and then stopped and traces are collected for that specific time
 slot). Of course this way is not appropriate for one system (like Ceph)
