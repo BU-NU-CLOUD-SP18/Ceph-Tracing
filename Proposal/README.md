@@ -60,7 +60,7 @@ Ceph OSD (Object Storage Daemon). The Ceph Metadata Server is also
 required when running Ceph Filesystem(CephFS) clients [3].The
 novelty in distributing metadata workload is dependent on object-based
 storage which allows direct communication between storage unit and
-client.\
+client.
 
 An evolution in committing Reliable Automatic Distributed Object Storage
 (RADOS) and its sibling interfaces helps to achieve linear scaling
@@ -69,13 +69,13 @@ fail recovery. Beside Ceph specific interface (RADOS), there are three
 other standard interfaces that work with RADOS(called as clients):
 CephFS for handling POSIX, Rados Block Device(RBD) for handling images
 (and virtual machines), and Radios Gateway (RGW) for handling REST API
-requests. [4]\
+requests. [4]
 
 The importance of Ceph is in its advancement, its scalability and the
 volume of acceptance from the industry. Due to its importance, it
 crucial to know Ceph's behavior. Tools such as tracing infrastructures
 that help us understanding system behavior and reasoning about
-performance issues are invaluable.\
+performance issues are invaluable.
 
 This project wishes to enable end-to-end tracing, from the request issue
 time till the time that is completed. The default tracing tool for ceph
@@ -106,7 +106,7 @@ system released as open source by Uber Technologies. It can capture
 traces, process them and finally visualize them and has its own specific
 interface for doing that. On each node of the cloud, Jaeger's agent
 should be installed and tracing point of the user application should be
-in Jaeger's syntax (format).\
+in Jaeger's syntax (format).
 
 The most important pros of Jaeger is that it is supported by an open
 source community and is improved continuously. It is literally important
