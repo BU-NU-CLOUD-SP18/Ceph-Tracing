@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex Proposal"] 1517860450 "Proposal.aux" "Proposal.bbl" "Proposal" 1517860450
+["bibtex Proposal"] 1517867039 "Proposal.aux" "Proposal.bbl" "Proposal" 1517867128
   "./IEEEtran.bst" 1517853689 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
   "Ceph_Tracing.bib" 1517859209 2100 3799d91ee717582e01eca19b2abb0f15 ""
-  "Proposal.aux" 1517860450 1005 55d09594022345b9293ca121a34aa33d ""
+  "Proposal.aux" 1517867128 1005 55d09594022345b9293ca121a34aa33d ""
   (generated)
   "Proposal.blg"
   "Proposal.bbl"
-["pdflatex"] 1517860450 "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.tex" "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.pdf" "Proposal" 1517860450
-  "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.aux" 1517860450 1005 55d09594022345b9293ca121a34aa33d ""
-  "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.tex" 1517860449 7698 162517d1d9762ba436d3d0dadf4adacd ""
+["pdflatex"] 1517867128 "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.tex" "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.pdf" "Proposal" 1517867128
+  "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.aux" 1517867128 1005 55d09594022345b9293ca121a34aa33d ""
+  "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.tex" 1517867126 7774 840e4b89876c3a190f585dc51a77760b ""
   "/Users/bowensong/Library/texmf/tex/latex/local/placeins.sty" 1113865200 4087 636308456f60d2b31cbf97867db5708d ""
   "/usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1480098698 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -82,14 +82,14 @@
   "/usr/local/texlive/2017basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1507853455 323200 e9b697a63e290ff6620eba8a812b8176 ""
   "/usr/local/texlive/2017basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1505533377 2588968 6bf65a4572ba0cc1f45a6016b4183640 ""
   "/usr/local/texlive/2017basic/texmf.cnf" 1496851631 628 b344fac068e513a3e5fe2214c3a47398 ""
-  "Proposal.aux" 1517860450 1005 55d09594022345b9293ca121a34aa33d ""
-  "Proposal.bbl" 1517860450 2406 f7cd34b08458e48970f33d4d33b7175b "bibtex Proposal"
-  "Proposal.tex" 1517860449 7698 162517d1d9762ba436d3d0dadf4adacd ""
+  "Proposal.aux" 1517867128 1005 55d09594022345b9293ca121a34aa33d ""
+  "Proposal.bbl" 1517867040 2406 f7cd34b08458e48970f33d4d33b7175b "bibtex Proposal"
+  "Proposal.tex" 1517867126 7774 840e4b89876c3a190f585dc51a77760b ""
   (generated)
-  "Proposal.log"
   "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.pdf"
-  "testing.bib"
   "Proposal.aux"
   "Proposal.pdf"
   "/Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/Proposal/Proposal.log"
+  "testing.bib"
+  "Proposal.log"
   "testin.bib"
