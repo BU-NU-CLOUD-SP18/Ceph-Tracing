@@ -1,13 +1,16 @@
+# Project Proposal: End-to-End Tracing, Ceph Tracing
+
 ---
-author:
+Author:
 - Golsana Ghaemi
 - Bowen Song
 - Oindrilla Chatterjee
 - Aditya Singh
-bibliography:
-- 'Ceph\_Tracing.bib'
-nocite: '[@*]'
-title: 'Project Proposal: End-to-End Tracing, Ceph Tracing'
+---
+Mentor:
+- Mania Abdi
+- Raja Sambasivan
+- Peter Portante
 ---
 
 
@@ -108,14 +111,14 @@ to have such a tracing tool in a live community like Ceph.
 Acceptance Criteria
 ===================
 
-1.  A weighted decision has been made to determine if Jaeger can be used
-    to replace the existing Blkin infrastructure.
+1.  A weighted decision to determine if Jaeger can be used
+    to replace the existing Blkin infrastructure
 
-2.  Jaeger has been introduced as a tracing infrastructure in Ceph.
+2.  Introduce Jaeger as a tracing infrastructure in Ceph
 
-3.  We are able to capture traces for Ceph using Jaeger.
+3.  Capture traces for Ceph using Jaeger
 
-4.  We can visualize the traces thereby generated.
+4.  Generate trace visualization
 
 Release Planning
 ================
@@ -137,4 +140,14 @@ of each iteration
 5.  Demonstration of capturing traces using Jaeger, system integration,
     testing, bug-fixing and user documentation completion
 
-\bibliographystyle{IEEEtran}
+
+References
+==========
+
+[1] B. H. Sigelman, L. A. Barroso, M. Burrows, P. Stephenson, M. Plakal, D. Beaver, S. Jaspan, and C. Shanbhag, “Dapper, a large-scale distributed sys- tems tracing infrastructure,” Google, Inc., Tech. Rep., 2010. [Online]. Available: https://research.google.com/archive/papers/dapper-2010-1.pdf
+[2] Red Hat, Inc. (2017) Ceph homepage. [Online]. Available: https://ceph.com
+[3] ——. (2016) Intro to Ceph Ceph Documentation. [Online]. Available: http://docs.ceph.com/docs/master/start/intro/
+[4] Sage A. Weil, et al., “Ceph: a scalable, high-performance distributed file system,” OSDI 06 Proceedings of the 7th symposium on Operating systems design and implementation, 2006.
+[5] Raja R. Sambasivan, et al., “So, you want to trace your distributed system? Key design insights from years of practical experience,” Carnegie Mellon University Parallel Data Lab Technical Report CMU-PDL-14-102, April, 2014.
+[6] Red Hat, Inc. (2016) Tracing Ceph With BlkKin Ceph Documentation. [Online]. Available: http://docs.ceph.com/docs/master/dev/blkin/
+
