@@ -10,7 +10,7 @@ https://thrift.apache.org
 
 # Jaeger Tracing pkg
 In applicaation, add pkg/log & pkg/tracing
-'''go
+```go
 	RunE: func(cmd *cobra.Command, args []string) error {
 		logger := log.NewFactory(logger.With(zap.String("service", "route")))
 		server := route.NewServer(
@@ -20,4 +20,4 @@ In applicaation, add pkg/log & pkg/tracing
 		)
 		return server.Run()
 	},
-'''
+```
