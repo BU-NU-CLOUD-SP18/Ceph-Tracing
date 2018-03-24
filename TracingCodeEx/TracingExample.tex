@@ -1,0 +1,28 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{listings-golang} % import this package after listings
+\usepackage{color}
+
+\lstset{ % add your own preferences
+    frame=single,
+    basicstyle=\footnotesize,
+    keywordstyle=\color{red},
+    numbers=left,
+    numbersep=5pt,
+    showstringspaces=false, 
+    stringstyle=\color{blue},
+    tabsize=4,
+    language=Golang % this is it !
+}
+
+\begin{document}
+\begin{lstlisting}
+tracing.Init("driver", metricsFactory.Namespace("driver", nil), 
+logger, jAgentHostPort),
+                        metricsFactory,
+                        logger,
+                        jAgentHostPort,
+                )
+\end{lstlisting}
+\end{document}

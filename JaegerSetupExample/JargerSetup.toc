@@ -1,0 +1,6 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}SSH Into VMswith respect to current configuration}{2}{section.2}
+\contentsline {section}{\numberline {3}Install Docker on Centos}{2}{section.3}
+\contentsline {section}{\numberline {4}Show Docker Jaeger GUI}{2}{section.4}
+\contentsline {section}{\numberline {5}Deploy HOTRod on Centos}{3}{section.5}

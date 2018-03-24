@@ -1,0 +1,161 @@
+go run ./main.go all
+2018-03-14T18:53:40.947-0400	INFO	cmd/root.go:65	Using expvar as metrics backend
+2018-03-14T18:53:40.947-0400	INFO	cmd/all.go:25	Starting all services
+2018-03-14T18:53:40.948-0400	INFO	log/logger.go:37	Starting	{"service": "frontend", "address": "http://0.0.0.0:8080"}
+2018-03-14T18:53:40.949-0400	INFO	log/logger.go:37	Starting	{"service": "route", "address": "http://0.0.0.0:8083"}
+2018-03-14T18:53:40.949-0400	INFO	log/logger.go:37	TChannel listening	{"service": "driver", "hostPort": "[::]:8082"}
+2018-03-14T18:53:40.950-0400	INFO	log/logger.go:37	Starting	{"service": "BowenTrace", "address": "http://0.0.0.0:8083"}
+2018-03-14T18:53:40.950-0400	INFO	log/logger.go:37	Starting	{"service": "customer", "address": "http://0.0.0.0:8081"}
+2018-03-14T18:53:55.967-0400	INFO	log/spanlogger.go:34	HTTP	{"service": "frontend", "method": "GET", "url": "/"}
+2018-03-14T18:53:57.060-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "frontend", "method": "GET", "url": "/dispatch?customer=392&nonse=0.8119612876048333"}
+2018-03-14T18:53:57.060-0400	INFO	log/spanlogger.go:34	Getting custome{"service": "frontend", "component": "customer_client", "customer_id": "392"}
+2018-03-14T18:53:57.061-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "customer", "method": "GET", "url": "/customer?customer=392"}
+2018-03-14T18:53:57.061-0400	INFO	log/spanlogger.go:34	Loading custome{"service": "customer", "component": "mysql", "customer_id": "392"}
+2018-03-14T18:53:57.346-0400	INFO	log/spanlogger.go:34	Found customer	{"service": "frontend", "customer": {"ID":"392","Name":"Trom Chocolatier","Location":"577,322"}}
+2018-03-14T18:53:57.346-0400	INFO	log/spanlogger.go:34	Finding nearest drivers	{"service": "frontend", "component": "driver_client", "location": "577,322"}
+2018-03-14T18:53:57.348-0400	INFO	log/spanlogger.go:34	Searching for nearby drivers	{"service": "driver", "location": "577,322"}
+2018-03-14T18:53:57.371-0400	INFO	log/spanlogger.go:34	Found drivers	{"service": "driver", "drivers": ["T742136C", "T748086C", "T760344C", "T779148C", "T752897C", "T717662C", "T787429C", "T768204C", "T744129C", "T765659C"]}
+2018-03-14T18:53:57.404-0400	ERROR	log/spanlogger.go:39	redis timeout	{"service": "driver", "driver_id": "T742136C", "error": "redis timeout"}
+github.com/jaegertracing/jaeger/examples/hotrod/pkg/log.spanLogger.Error
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/pkg/log/spanlogger.go:39
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Redis).GetDriver
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/redis.go:84
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Server).FindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/server.go:85
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).handleFindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:92
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:76
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:133
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:203
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*handlerMap).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:118
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.channelHandler.Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:126
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*Connection).dispatchInbound
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/inbound.go:195
+2018-03-14T18:53:57.405-0400	ERROR	log/spanlogger.go:39	Retrying GetDriver after error	{"service": "driver", "retry_no": 1, "error": "redis timeout"}
+github.com/jaegertracing/jaeger/examples/hotrod/pkg/log.spanLogger.Error
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/pkg/log/spanlogger.go:39
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Server).FindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/server.go:89
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).handleFindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:92
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:76
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:133
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:203
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*handlerMap).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:118
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.channelHandler.Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:126
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*Connection).dispatchInbound
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/inbound.go:195
+2018-03-14T18:53:57.490-0400	ERROR	log/spanlogger.go:39	redis timeout	{"service": "driver", "driver_id": "T752897C", "error": "redis timeout"}
+github.com/jaegertracing/jaeger/examples/hotrod/pkg/log.spanLogger.Error
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/pkg/log/spanlogger.go:39
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Redis).GetDriver
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/redis.go:84
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Server).FindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/server.go:85
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).handleFindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:92
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:76
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:133
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:203
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*handlerMap).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:118
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.channelHandler.Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:126
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*Connection).dispatchInbound
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/inbound.go:195
+2018-03-14T18:53:57.490-0400	ERROR	log/spanlogger.go:39	Retrying GetDriver after error	{"service": "driver", "retry_no": 1, "error": "redis timeout"}
+github.com/jaegertracing/jaeger/examples/hotrod/pkg/log.spanLogger.Error
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/pkg/log/spanlogger.go:39
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Server).FindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/server.go:89
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).handleFindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:92
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:76
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:133
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:203
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*handlerMap).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:118
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.channelHandler.Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:126
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*Connection).dispatchInbound
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/inbound.go:195
+2018-03-14T18:53:57.557-0400	ERROR	log/spanlogger.go:39	redis timeout	{"service": "driver", "driver_id": "T744129C", "error": "redis timeout"}
+github.com/jaegertracing/jaeger/examples/hotrod/pkg/log.spanLogger.Error
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/pkg/log/spanlogger.go:39
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Redis).GetDriver
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/redis.go:84
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Server).FindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/server.go:85
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).handleFindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:92
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:76
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:133
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:203
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*handlerMap).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:118
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.channelHandler.Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:126
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*Connection).dispatchInbound
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/inbound.go:195
+2018-03-14T18:53:57.557-0400	ERROR	log/spanlogger.go:39	Retrying GetDriver after error	{"service": "driver", "retry_no": 1, "error": "redis timeout"}
+github.com/jaegertracing/jaeger/examples/hotrod/pkg/log.spanLogger.Error
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/pkg/log/spanlogger.go:39
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver.(*Server).FindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/server.go:89
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).handleFindNearest
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:92
+github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver.(*tchanDriverServer).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/examples/hotrod/services/driver/thrift-gen/driver/tchan-driver.go:76
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:133
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift.(*Server).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/thrift/server.go:203
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*handlerMap).Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:118
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.channelHandler.Handle
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/handlers.go:126
+github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go.(*Connection).dispatchInbound
+	/Users/bowensong/go/src/github.com/jaegertracing/jaeger/vendor/github.com/uber/tchannel-go/inbound.go:195
+2018-03-14T18:53:57.577-0400	INFO	log/spanlogger.go:34	Search successful	{"service": "driver", "num_drivers": 10}
+2018-03-14T18:53:57.577-0400	INFO	log/spanlogger.go:34	Found drivers	{"service": "frontend", "drivers": [{"DriverID":"T742136C","Location":"749,93"},{"DriverID":"T748086C","Location":"437,434"},{"DriverID":"T760344C","Location":"575,59"},{"DriverID":"T779148C","Location":"45,845"},{"DriverID":"T752897C","Location":"223,62"},{"DriverID":"T717662C","Location":"432,293"},{"DriverID":"T787429C","Location":"496,933"},{"DriverID":"T768204C","Location":"333,815"},{"DriverID":"T744129C","Location":"119,240"},{"DriverID":"T765659C","Location":"368,94"}]}
+2018-03-14T18:53:57.578-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "437,434", "dropoff": "577,322"}
+2018-03-14T18:53:57.578-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "749,93", "dropoff": "577,322"}
+2018-03-14T18:53:57.578-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "575,59", "dropoff": "577,322"}
+2018-03-14T18:53:57.578-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=437%2C434"}
+2018-03-14T18:53:57.578-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=749%2C93"}
+2018-03-14T18:53:57.578-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=575%2C59"}
+2018-03-14T18:53:57.605-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "45,845", "dropoff": "577,322"}
+2018-03-14T18:53:57.605-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=45%2C845"}
+2018-03-14T18:53:57.613-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "223,62", "dropoff": "577,322"}
+2018-03-14T18:53:57.613-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=223%2C62"}
+2018-03-14T18:53:57.634-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "432,293", "dropoff": "577,322"}
+2018-03-14T18:53:57.634-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=432%2C293"}
+2018-03-14T18:53:57.656-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "496,933", "dropoff": "577,322"}
+2018-03-14T18:53:57.656-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=496%2C933"}
+2018-03-14T18:53:57.658-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "333,815", "dropoff": "577,322"}
+2018-03-14T18:53:57.658-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=333%2C815"}
+2018-03-14T18:53:57.677-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "119,240", "dropoff": "577,322"}
+2018-03-14T18:53:57.677-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=119%2C240"}
+2018-03-14T18:53:57.712-0400	INFO	log/spanlogger.go:34	Finding route	{"service": "frontend", "component": "route_client", "pickup": "368,94", "dropoff": "577,322"}
+2018-03-14T18:53:57.713-0400	INFO	log/spanlogger.go:34	HTTP request received	{"service": "route", "method": "GET", "url": "/route?dropoff=577%2C322&pickup=368%2C94"}
+2018-03-14T18:53:57.761-0400	INFO	log/spanlogger.go:34	Found routes	{"service": "frontend", "routes": [{},{},{},{},{},{},{},{},{},{}]}
+2018-03-14T18:53:57.761-0400	INFO	log/spanlogger.go:34	Dispatch successful	{"service": "frontend", "driver": "T742136C", "eta": "2m0s"}

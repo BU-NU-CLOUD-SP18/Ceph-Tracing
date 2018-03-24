@@ -1,0 +1,111 @@
+PWD /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample
+INPUT /usr/local/texlive/2017basic/texmf.cnf
+INPUT /usr/local/texlive/2017basic/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2017basic/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.tex
+OUTPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.log
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/utf8.def
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/utf8.def
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/t1enc.dfu
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/t1enc.dfu
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/ot1enc.dfu
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/ot1enc.dfu
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/omsenc.dfu
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/omsenc.dfu
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/babel-english/english.ldf
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/babel-english/english.ldf
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/babel/babel.def
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/oberdiek/auxhook.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/oberdiek/auxhook.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.aux
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.aux
+OUTPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.aux
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+OUTPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.pdf
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+OUTPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.toc
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.toc
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+OUTPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.toc
+INPUT /usr/local/texlive/2017basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.aux
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+INPUT /Users/bowensong/Google Drive/BU/Spring2018/EC528/Ceph-Tracing/JaegerSetupExample/JargerSetup.out
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
