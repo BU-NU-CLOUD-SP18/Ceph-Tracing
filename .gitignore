@@ -1,0 +1,12 @@
+# Mac folder order file
+*Icon\r
+*.DS_Store 
+
+# Latex files
+*.synctex.gz
+*.tex
+*.sty
+*.log
+*.fls
+*.fdb_latexmk
+*.aux
