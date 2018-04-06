@@ -1,13 +1,13 @@
 # Project Proposal: End-to-End Tracing, Ceph Tracing
 
 ---
-Author:
+Authors:
 - Golsana Ghaemi
 - Bowen Song
 - Oindrilla Chatterjee
 - Aditya Singh
 ---
-Mentor:
+Mentors:
 - Mania Abdi
 - Raja Sambasivan
 - Peter Portante
@@ -118,9 +118,9 @@ Acceptance Criteria
 1.  A weighted decision to determine if Jaeger can be used
     to replace the existing Blkin infrastructure. Identification of the complexities involved in the replacement.
 
-2.  Take Blkin’s tracepoints and replace with jaegers backend, thus, introduce Jaeger as a tracing infrastructure in Ceph
+2.  Take Blkin’s tracepoints and replace with jaegers backend, thus, introduce Jaeger as a tracing infrastructure in Ceph.
 
-3.  Capture traces for Ceph using Jaeger. Take a workload and visualize the traces.
+3.  Capture traces for Ceph using Jaeger. Visualize traces suing a sample workload.
 
 
 
