@@ -120,7 +120,7 @@ Acceptance Criteria
 
 2.  Take Blkin’s tracepoints and replace with jaegers backend, thus, introduce Jaeger as a tracing infrastructure in Ceph.
 
-3.  Capture traces for Ceph using Jaeger. Visualize traces suing a sample workload.
+3.  Capture traces for Ceph using Jaeger. Visualize "always-on" traces in Ceph with a sample workload.
 
 
 
