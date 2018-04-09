@@ -258,7 +258,7 @@
 
     opentracing::Tracer::InitGlobal(opentracing::MakeNoopTracer());
 
-```C++
+```
 ### Usage Propergation
 ```C++
     const auto handle = testutils::TracerUtil::installGlobalTracer();
@@ -324,7 +324,7 @@
         ASSERT_TRUE(static_cast<bool>(extractedCtx));
         ASSERT_EQ(span->context(), *extractedCtx);
     }
-    ```C++
+    ```
 ## Tag
  - Tag(const std::pair<std::string,ValueArg> & tag_pair)
         : _key(tag_pair.first)
