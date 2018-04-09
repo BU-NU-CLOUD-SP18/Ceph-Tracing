@@ -1,13 +1,13 @@
 # Project Proposal: End-to-End Tracing, Ceph Tracing
 
 ---
-Author:
+Authors:
 - Golsana Ghaemi
 - Bowen Song
 - Oindrilla Chatterjee
 - Aditya Singh
 ---
-Mentor:
+Mentors:
 - Mania Abdi
 - Raja Sambasivan
 - Peter Portante
@@ -19,8 +19,7 @@ Vision and Goals Of The Project
 
 This project focuses on enabling a strong and open source tracing
 infrastructure for Ceph, a novel open source high-performance
-distributed software storage. The focus of the implementation is to
-replace Blkin tracing infrastructure with Jaeger for enabling an
+distributed software storage. The focus of the implementation is to identify the challenges involved in ripping out Blkin's definition of tracing and propagation of Metadata and replacing with Jaeger and identify the feasibility of doing so. If it is feasible, the aim is to replace Blkin tracing infrastructure with Jaeger for enabling an
 "always-on" and open source end-to-end tracing feature for Ceph.
 
 Users/Personas Of The Project
@@ -33,7 +32,8 @@ multiple physical facilities. Knowing the system behavior and reasoning
 about performance issues are invaluable in such environments[1].
 Therefore, the obvious use is to allow system engineers and researchers
 better understand the infrastructure and keep the system at highest
-efficiency.
+efficiency. The users of the system are the administrators operating Ceph who want to
+understand a performance anomaly and understand the scope of the possibility of reducing the performance overhead.
 
 Scope and Features Of The Project
 =================================
@@ -116,15 +116,20 @@ Acceptance Criteria
 ===================
 
 1.  A weighted decision to determine if Jaeger can be used
-    to replace the existing Blkin infrastructure
+    to replace the existing Blkin infrastructure. Identification of the complexities involved in the replacement.
 
-2.  Introduce Jaeger as a tracing infrastructure in Ceph
+2.  Take Blkin’s tracepoints and replace with jaegers backend, thus, introduce Jaeger as a tracing infrastructure in Ceph.
 
-3.  Capture traces for Ceph using Jaeger
+3.  Capture traces for Ceph using Jaeger. Visualize "always-on" traces in Ceph with a sample workload.
 
-4.  Generate trace visualization
 
-Release Planning
+
+
+
+
+
+
+Milestones/Deliverables
 ================
 
 The project would be implemented and delivered incrementally at the end
