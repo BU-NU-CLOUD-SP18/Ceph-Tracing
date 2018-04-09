@@ -4,12 +4,13 @@
  - Exception(const std::string& what, int numFailed)
  - int numFailed() const { return _numFailed; } // from excepton
 ```
-## UDP Transport Extense Transport
+This is an abstract function, For implementation see UDP transport
+## UDP Transport extend Transport
 ```C++
  - int append(const Span& span) override;
- - int flush() override;
- - void close() override { _client->close(); }
- - UDPTransport(const net::IPAddress& ip, int maxPacketSize);
+ - int flush() override; //Jaeger has a fix pool of threads, this is how you clean it
+ - void close() override { _client->close(); } // kill the thread
+ - UDPTransport(const net::IPAddress& ip, int maxPacketSize); // header for transport
 ```
 ### Usage
 ```C++
@@ -18,10 +19,10 @@
     std::static_pointer_cast<const Tracer>(opentracing::Tracer::Global());
     UDPTransport sender(handle->_mockAgent->spanServerAddress(), 0); \\_mockAgent is a testing globle variable
     constexpr auto kNumMessages = 2000;
-    const auto logger = logging::consoleLogger();
     for (auto i = 0; i < kNumMessages; ++i) {
-        Span span(tracer);
-        span.SetOperationName("test" + std::to_string(i));
+        Span span(tracer); // init a span
+        span.SetOperationName("test" + std::to_string(i));// add your content
+        sender.append(span) // this is how you send mesages
     }
 ```
 ## TracerFactory
@@ -56,11 +57,11 @@
         "hostPort": "127.0.0.1:5778",
         "refreshInterval": 60
     }
-  })";
-    TracerFactory tracerFactory;
-    std::string errorMessage;
-    auto tracerMaybe = tracerFactory.MakeTracer(config, errorMessage);
-    // an exmaple of a valid config
+  })";    // an exmaple of a valid config
+    TracerFactory tracerFactory; //class init
+    std::string errorMessage; // later error msg gets stored here
+    auto tracerMaybe = tracerFactory.MakeTracer(config, errorMessage);// here we made a tracer, return a Tracer
+
 ```
 ## Tracer
 ```C++
@@ -70,7 +71,7 @@
         return make(serviceName,
                     config,
                     std::shared_ptr<logging::Logger>(logging::nullLogger()));
-    }
+    } // a lot more methods of these, this is one example
  - std::unique_ptr<opentracing::Span>
     StartSpanWithOptions(string_view operationName,
                          const opentracing::StartSpanOptions& options) const
@@ -139,16 +140,18 @@
     const auto handle = testutils::TracerUtil::installGlobalTracer();
     const auto tracer =
         std::static_pointer_cast<Tracer>(opentracing::Tracer::Global());
-
+        \\a trace point
     auto tagItr = std::find_if(
         std::begin(tracer->tags()),
         std::end(tracer->tags()),
         [](const Tag& tag) { return tag.key() == kJaegerClientVersionTagKey; });
-    ASSERT_NE(std::end(tracer->tags()), tagItr);
-    ASSERT_TRUE(tagItr->value().is<const char*>());
+        \\
+    ASSERT_NE(std::end(tracer->tags()), tagItr); //makes sure their return are different
+    ASSERT_TRUE(tagItr->value().is<const char*>()); //makes sure is return true
     ASSERT_EQ("C++-",
               static_cast<std::string>(tagItr->value().get<const char*>())
-                  .substr(0, 4));
+                  .substr(0, 4));//makes sure their return are equal
+                  \\ Aserts are only for test functions
 
     opentracing::StartSpanOptions options;
     options.tags.push_back({ "tag-key", 1.23 });
@@ -273,7 +276,7 @@
 ```
 ### Usage Propergation
 ```C++
-    const auto handle = testutils::TracerUtil::installGlobalTracer();
+    const auto handle = testutils::TracerUtil::installGlobalTracer(); //
     const auto tracer =
         std::static_pointer_cast<Tracer>(opentracing::Tracer::Global());
     const std::unique_ptr<Span> span(static_cast<Span*>(
@@ -397,3 +400,37 @@
   -     std::ostringstream oss;
     oss << TraceID(0, 10);
 ```
+## Definition of TracerUtil: std::shared_ptr<ResourceHandle> installGlobalTracer _mockAgent
+```C++
+namespace testutils {
+namespace TracerUtil {
+
+std::shared_ptr<ResourceHandle> installGlobalTracer()
+{
+    std::unique_ptr<ResourceHandle> handle(new ResourceHandle());
+    handle->_mockAgent->start();
+    std::ostringstream samplingServerURLStream;
+    samplingServerURLStream
+        << "http://" << handle->_mockAgent->samplingServerAddress().authority();
+    Config config(
+        false,
+        samplers::Config("const",
+                         1,
+                         samplingServerURLStream.str(),
+                         0,
+                         samplers::Config::Clock::duration()),
+        reporters::Config(0,
+                          reporters::Config::Clock::duration(),
+                          false,
+                          handle->_mockAgent->spanServerAddress().authority()),
+        propagation::HeadersConfig(),
+        baggage::RestrictionsConfig());
+
+    auto tracer = Tracer::make("test-service", config, logging::nullLogger());
+    opentracing::Tracer::InitGlobal(tracer);
+    return std::move(handle);
+}
+
+}  // namespace TracerUtil
+```
+}  // namespace testutils
