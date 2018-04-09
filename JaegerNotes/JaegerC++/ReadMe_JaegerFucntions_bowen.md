@@ -53,6 +53,7 @@
     auto tracerMaybe = tracerFactory.MakeTracer(config, errorMessage);
     // an exmaple of a valid config
 ## Tracer
+```C++
  - static std::shared_ptr<opentracing::Tracer>
     make(const std::string& serviceName, const Config& config)
     {
@@ -122,6 +123,7 @@
     {
         return _baggageSetter;
     }
+    ```
 ### Usage Tracer
 ```C++
     const auto handle = testutils::TracerUtil::installGlobalTracer();
