@@ -338,6 +338,7 @@
     }
 ```
 ## Tag
+```C++
  - Tag(const std::pair<std::string,ValueArg> & tag_pair)
         : _key(tag_pair.first)
         , _value(tag_pair.second)
@@ -357,7 +358,9 @@
         opentracing::util::apply_visitor(visitor, _value);
         return tag;
     }
+```
 ### Usage
+```C++
  -     const Tag tags[] = { { "testBool", true },
                          { "testDouble", 0.0 },
                          { "testInt64", 0LL },
@@ -366,7 +369,9 @@
                          { "testNull", nullptr },
                          { "testCStr", "test" } };
 // How to make tags, which you define freely
+```
 ## TraceID
+```C++
  - TraceID(uint64_t high, uint64_t low)
         : _high(high)
         , _low(low)
@@ -386,6 +391,9 @@
  - uint64_t high() const { return _high; }
  - uint64_t low() const { return _low; }
  - static TraceID fromStream(std::istream& in);
+```
  ### Usage
+ ```C++
   -     std::ostringstream oss;
     oss << TraceID(0, 10);
+```
