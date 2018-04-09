@@ -123,10 +123,11 @@
         return _baggageSetter;
     }
 ### Usage Tracer
-{
+'''C++
     const auto handle = testutils::TracerUtil::installGlobalTracer();
     const auto tracer =
         std::static_pointer_cast<Tracer>(opentracing::Tracer::Global());
+
     auto tagItr = std::find_if(
         std::begin(tracer->tags()),
         std::end(tracer->tags()),
@@ -136,8 +137,10 @@
     ASSERT_EQ("C++-",
               static_cast<std::string>(tagItr->value().get<const char*>())
                   .substr(0, 4));
+
     opentracing::StartSpanOptions options;
     options.tags.push_back({ "tag-key", 1.23 });
+
     const FakeSpanContext fakeCtx;
     options.references.emplace_back(opentracing::SpanReferenceType::ChildOfRef,
                                     &fakeCtx);
@@ -160,6 +163,7 @@
         "123");
     options.references.emplace_back(opentracing::SpanReferenceType::ChildOfRef,
                                     &debugCtx);
+
     const auto& tags = tracer->tags();
     auto itr =
         std::find_if(std::begin(tags), std::end(tags), [](const Tag& tag) {
@@ -169,10 +173,12 @@
     ASSERT_TRUE(itr->value().is<std::string>());
     ASSERT_EQ(net::IPAddress::v4(itr->value().get<std::string>()).host(),
               net::IPAddress::localIP(AF_INET).host());
+
     std::unique_ptr<Span> span(static_cast<Span*>(
         tracer->StartSpanWithOptions("test-operation", options).release()));
     ASSERT_TRUE(static_cast<bool>(span));
     ASSERT_EQ(static_cast<opentracing::Tracer*>(tracer.get()), &span->tracer());
+
     span->SetOperationName("test-set-operation");
     span->SetTag("tag-key", "tag-value");
     span->SetBaggageItem("test-baggage-item-key", "test-baggage-item-value");
@@ -190,21 +196,25 @@
     span->SetOperationName("test-set-operation-after-finish");
     ASSERT_EQ("test-set-operation", span->operationName());
     span->SetTag("tagged-after-finish-key", "tagged-after-finish-value");
+
     span.reset(static_cast<Span*>(
         tracer->StartSpanWithOptions("test-span-with-default-options", {})
             .release()));
+
     options.references.clear();
     options.references.emplace_back(
         opentracing::SpanReferenceType::FollowsFromRef, &parentCtx);
     span.reset(static_cast<Span*>(
         tracer->StartSpanWithOptions("test-span-with-default-options", options)
             .release()));
+
     options.references.clear();
     options.references.emplace_back(opentracing::SpanReferenceType::ChildOfRef,
                                     &debugCtx);
     span.reset(static_cast<Span*>(
         tracer->StartSpanWithOptions("test-span-with-debug-parent", options)
             .release()));
+
     options.references.clear();
     options.references.emplace_back(
         opentracing::SpanReferenceType::FollowsFromRef, &parentCtx);
@@ -221,6 +231,7 @@
     ASSERT_GE(std::chrono::milliseconds(10),
               absTimeDiff<Tracer::SystemClock>(span->startTimeSystem(),
                                                calculatedSystemTime));
+
     options.start_system_timestamp = Tracer::SystemClock::now();
     span.reset(static_cast<Span*>(
         tracer
@@ -234,6 +245,7 @@
     ASSERT_GE(std::chrono::milliseconds(10),
               absTimeDiff<Tracer::SteadyClock>(span->startTimeSteady(),
                                                calculatedSteadyTime));
+
     options.start_system_timestamp = Tracer::SystemClock::now();
     options.start_steady_timestamp = Tracer::SteadyClock::now();
     span.reset(static_cast<Span*>(
@@ -241,11 +253,15 @@
             .release()));
     ASSERT_EQ(options.start_system_timestamp, span->startTimeSystem());
     ASSERT_EQ(options.start_steady_timestamp, span->startTimeSteady());
+
     span.reset();
+
     opentracing::Tracer::InitGlobal(opentracing::MakeNoopTracer());
-}
+
+'''C++
 ### Usage Propergation
- - const auto handle = testutils::TracerUtil::installGlobalTracer();
+'''C++
+    const auto handle = testutils::TracerUtil::installGlobalTracer();
     const auto tracer =
         std::static_pointer_cast<Tracer>(opentracing::Tracer::Global());
     const std::unique_ptr<Span> span(static_cast<Span*>(
@@ -308,6 +324,7 @@
         ASSERT_TRUE(static_cast<bool>(extractedCtx));
         ASSERT_EQ(span->context(), *extractedCtx);
     }
+    '''C++
 ## Tag
  - Tag(const std::pair<std::string,ValueArg> & tag_pair)
         : _key(tag_pair.first)
