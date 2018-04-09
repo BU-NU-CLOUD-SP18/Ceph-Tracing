@@ -17,7 +17,7 @@ This is an abstract function, For implementation see UDP transport
  -  const auto handle = testutils::TracerUtil::installGlobalTracer(); 
     const auto tracer =
     std::static_pointer_cast<const Tracer>(opentracing::Tracer::Global());
-    UDPTransport sender(handle->_mockAgent->spanServerAddress(), 0); \\_mockAgent is a testing globle variable
+    UDPTransport sender(handle->_mockAgent->spanServerAddress(), 0); //_mockAgent is a testing globle variable
     constexpr auto kNumMessages = 2000;
     for (auto i = 0; i < kNumMessages; ++i) {
         Span span(tracer); // init a span
@@ -140,18 +140,18 @@ This is an abstract function, For implementation see UDP transport
     const auto handle = testutils::TracerUtil::installGlobalTracer();
     const auto tracer =
         std::static_pointer_cast<Tracer>(opentracing::Tracer::Global());
-        \\a trace point
+        //a trace point
     auto tagItr = std::find_if(
         std::begin(tracer->tags()),
         std::end(tracer->tags()),
         [](const Tag& tag) { return tag.key() == kJaegerClientVersionTagKey; });
-        \\
+        //
     ASSERT_NE(std::end(tracer->tags()), tagItr); //makes sure their return are different
     ASSERT_TRUE(tagItr->value().is<const char*>()); //makes sure is return true
     ASSERT_EQ("C++-",
               static_cast<std::string>(tagItr->value().get<const char*>())
                   .substr(0, 4));//makes sure their return are equal
-                  \\ Aserts are only for test functions
+                  // Aserts are only for test functions
 
     opentracing::StartSpanOptions options;
     options.tags.push_back({ "tag-key", 1.23 });
