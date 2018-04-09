@@ -12,7 +12,7 @@
  - UDPTransport(const net::IPAddress& ip, int maxPacketSize);
 ```
 ### Usage
- ```C++
+```C++
  -  const auto handle = testutils::TracerUtil::installGlobalTracer(); 
     const auto tracer =
     std::static_pointer_cast<const Tracer>(opentracing::Tracer::Global());
@@ -30,7 +30,7 @@
  //make sure jaeger is build with yaml support
 ```
  ### Usage
- ```C++
+```C++
   - const char* config = R"(
   {
     "service_name": "test",
