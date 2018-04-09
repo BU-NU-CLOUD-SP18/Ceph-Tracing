@@ -123,7 +123,7 @@
     {
         return _baggageSetter;
     }
-    ```
+```
 ### Usage Tracer
 ```C++
     const auto handle = testutils::TracerUtil::installGlobalTracer();
