@@ -324,7 +324,7 @@
         ASSERT_TRUE(static_cast<bool>(extractedCtx));
         ASSERT_EQ(span->context(), *extractedCtx);
     }
-    ```
+```
 ## Tag
  - Tag(const std::pair<std::string,ValueArg> & tag_pair)
         : _key(tag_pair.first)
