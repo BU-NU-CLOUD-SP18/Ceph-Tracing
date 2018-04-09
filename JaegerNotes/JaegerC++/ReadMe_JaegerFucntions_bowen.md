@@ -7,6 +7,8 @@
  - int flush() override;
  - void close() override { _client->close(); }
  - UDPTransport(const net::IPAddress& ip, int maxPacketSize);
+--- Use
+ - asd
 ## TracerFactory
  - MakeTracer(const char* configuration, std::string& errorMessage) const
  //make sure jaeger is build with yaml support
