@@ -1,13 +1,18 @@
 # Jaeger Functions
 ## Trasport
+```C++
  - Exception(const std::string& what, int numFailed)
  - int numFailed() const { return _numFailed; } // from excepton
+```
 ## UDP Transport Extense Transport
+```C++
  - int append(const Span& span) override;
  - int flush() override;
  - void close() override { _client->close(); }
  - UDPTransport(const net::IPAddress& ip, int maxPacketSize);
+```
 ### Usage
+ ```C++
  -  const auto handle = testutils::TracerUtil::installGlobalTracer(); 
     const auto tracer =
     std::static_pointer_cast<const Tracer>(opentracing::Tracer::Global());
@@ -18,10 +23,14 @@
         Span span(tracer);
         span.SetOperationName("test" + std::to_string(i));
     }
+```
 ## TracerFactory
+```C++
  - MakeTracer(const char* configuration, std::string& errorMessage) const
  //make sure jaeger is build with yaml support
+```
  ### Usage
+ ```C++
   - const char* config = R"(
   {
     "service_name": "test",
@@ -52,6 +61,7 @@
     std::string errorMessage;
     auto tracerMaybe = tracerFactory.MakeTracer(config, errorMessage);
     // an exmaple of a valid config
+```
 ## Tracer
 ```C++
  - static std::shared_ptr<opentracing::Tracer>
