@@ -123,7 +123,7 @@
         return _baggageSetter;
     }
 ### Usage Tracer
-'''C++
+```C++
     const auto handle = testutils::TracerUtil::installGlobalTracer();
     const auto tracer =
         std::static_pointer_cast<Tracer>(opentracing::Tracer::Global());
@@ -258,9 +258,9 @@
 
     opentracing::Tracer::InitGlobal(opentracing::MakeNoopTracer());
 
-'''C++
+```C++
 ### Usage Propergation
-'''C++
+```C++
     const auto handle = testutils::TracerUtil::installGlobalTracer();
     const auto tracer =
         std::static_pointer_cast<Tracer>(opentracing::Tracer::Global());
@@ -324,7 +324,7 @@
         ASSERT_TRUE(static_cast<bool>(extractedCtx));
         ASSERT_EQ(span->context(), *extractedCtx);
     }
-    '''C++
+    ```C++
 ## Tag
  - Tag(const std::pair<std::string,ValueArg> & tag_pair)
         : _key(tag_pair.first)
