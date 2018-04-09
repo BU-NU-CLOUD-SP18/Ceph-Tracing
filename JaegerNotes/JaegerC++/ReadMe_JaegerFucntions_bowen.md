@@ -7,7 +7,7 @@
  - int flush() override;
  - void close() override { _client->close(); }
  - UDPTransport(const net::IPAddress& ip, int maxPacketSize);
---- Use
+### Usage
  - asd
 ## TracerFactory
  - MakeTracer(const char* configuration, std::string& errorMessage) const
