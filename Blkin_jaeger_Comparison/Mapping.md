@@ -128,7 +128,7 @@ class Endpoint {
 
 ```
 ### link
-cpp-client-master/src/jaegertracing/thrift-gen/zipkincore_types.h
+jaeger-client-cpp/src/jaegertracing/thrift-gen/zipkincore_types.h
 
 
 ## Blkin
@@ -203,4 +203,4 @@ Tracer::analyzeReferences(const std::vector<OpenTracingRef>& references) const
 
 ```
 ### link
-src/jaegertracing/Tracer.h
+jaeger-client-cpp/src/jaegertracing/Tracer.h
