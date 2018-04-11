@@ -1,3 +1,4 @@
+
 # Compare Blkin and Jaeger
 
 
@@ -73,58 +74,6 @@ blkin/blkin-lib/ztracer.hpp
 
 ## Jaeger
 ```C++
-class Endpoint {
- public:
-
-  static const char* ascii_fingerprint; // = "66357C747F937372BB32913F3D70EB58";
-  static const uint8_t binary_fingerprint[16]; // = {0x66,0x35,0x7C,0x74,0x7F,0x93,0x73,0x72,0xBB,0x32,0x91,0x3F,0x3D,0x70,0xEB,0x58};
-
-  Endpoint(const Endpoint&);
-  Endpoint& operator=(const Endpoint&);
-  Endpoint() : ipv4(0), port(0), service_name(), ipv6() {
-  }
-
-  virtual ~Endpoint() throw();
-  int32_t ipv4;
-  int16_t port;
-  std::string service_name;
-  std::string ipv6;
-
-  _Endpoint__isset __isset;
-
-  void __set_ipv4(const int32_t val);
-
-  void __set_port(const int16_t val);
-
-  void __set_service_name(const std::string& val);
-
-  void __set_ipv6(const std::string& val);
-
-  bool operator == (const Endpoint & rhs) const
-  {
-    if (!(ipv4 == rhs.ipv4))
-      return false;
-    if (!(port == rhs.port))
-      return false;
-    if (!(service_name == rhs.service_name))
-      return false;
-    if (__isset.ipv6 != rhs.__isset.ipv6)
-      return false;
-    else if (__isset.ipv6 && !(ipv6 == rhs.ipv6))
-      return false;
-    return true;
-  }
-  bool operator != (const Endpoint &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Endpoint & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  friend std::ostream& operator<<(std::ostream& out, const Endpoint& obj);
-};
 
 ```
 ### link
@@ -160,47 +109,37 @@ blkin/blkin-lib/ztracer.hpp
 
 ## Jaeger
 ```C++
-Tracer::AnalyzedReferences
-Tracer::analyzeReferences(const std::vector<OpenTracingRef>& references) const
-{
-    AnalyzedReferences result;
-    auto hasParent = false;
-    const auto* parent = result._parent;
-    for (auto&& ref : references) {
-        const auto* ctx = dynamic_cast<const SpanContext*>(ref.second);
-
-        if (!ctx) {
-            _logger->error("Reference contains invalid type of SpanReference");
-            continue;
-        }
-
-        if (!ctx->isValid() && !ctx->isDebugIDContainerOnly() &&
-            ctx->baggage().empty()) {
-            continue;
-        }
-
-        result._references.emplace_back(Reference(*ctx, ref.first));
-
-        if (!hasParent) {
-            parent = ctx;
-            hasParent =
-                (ref.first == opentracing::SpanReferenceType::ChildOfRef);
-        }
-    }
-
-    if (!hasParent && parent && parent->isValid()) {
-        // Use `FollowsFromRef` in place of `ChildOfRef`.
-        hasParent = true;
-    }
-
-    if (hasParent) {
-        assert(parent);
-        result._parent = parent;
-    }
-
-    return result;
-}
 
 ```
 ### link
 jaeger-client-cpp/src/jaegertracing/Tracer.h
+
+## Blkin
+
+```C++
+// record timestamp annotations
+	void event(const char *event) const
+	    {
+		if (valid())
+		    BLKIN_TIMESTAMP(this, endpoint, event);
+	    }
+	void event(const char *event, const Endpoint *ep) const
+	    {
+		if (valid())
+		    BLKIN_TIMESTAMP(this, ep, event);
+	    }
+```
+### link
+blkin/blkin-lib/ztracer.hpp   
+
+## Jaeger
+```C++
+
+```
+### link
+
+
+
+
+
+
