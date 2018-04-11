@@ -3,6 +3,7 @@
 
 
 ## Blkin
+This is the Endpoint Class from the Ztracer namespace
 ```C++
 class Endpoint : private blkin_endpoint {
     private:
@@ -131,6 +132,7 @@ cpp-client-master/src/jaegertracing/thrift-gen/zipkincore_types.h
 
 
 ## Blkin
+This is the init() function from the Trace class in Ztracer namespace
 ```C++
 // (re)initialize a Trace with an optional parent
 	int init(const char *name, const Endpoint *ep,
