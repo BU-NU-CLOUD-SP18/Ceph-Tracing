@@ -115,6 +115,7 @@ blkin/blkin-lib/ztracer.hpp
 jaeger-client-cpp/src/jaegertracing/Tracer.h
 
 ## Blkin
+This is the Trace() class present in the Ztracer namespace
 
 ```C++
 // record timestamp annotations
