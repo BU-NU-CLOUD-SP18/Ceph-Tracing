@@ -74,10 +74,42 @@ blkin/blkin-lib/ztracer.hpp
 
 ## Jaeger
 ```C++
+opentracing::expected<std::shared_ptr<opentracing::Tracer>>
+TracerFactory::MakeTracer(const char* configuration,
+                          std::string& errorMessage) const noexcept try {
+#ifndef JAEGERTRACING_WITH_YAML_CPP
+    errorMessage =
+        "Failed to construct tracer: Jaeger was not build with yaml support.";
+    return opentracing::make_unexpected(
+        std::make_error_code(std::errc::not_supported));
+#else
+    YAML::Node yaml;
+    try {
+        yaml = YAML::Load(configuration);
+    } catch (const YAML::ParserException& e) {
+        errorMessage = e.what();
+        return opentracing::make_unexpected(
+            opentracing::configuration_parse_error);
+    }
 
+    const auto serviceNameNode = yaml["service_name"];
+    if (!serviceNameNode) {
+        errorMessage = "`service_name` not provided";
+        return opentracing::make_unexpected(
+            opentracing::invalid_configuration_error);
+    }
+    if (!serviceNameNode.IsScalar()) {
+        errorMessage = "`service_name` must be a string";
+        return opentracing::make_unexpected(
+            opentracing::invalid_configuration_error);
+    }
+    std::string serviceName = serviceNameNode.Scalar();
+
+    const auto tracerConfig = jaegertracing::Config::parse(yaml);
+    return jaegertracing::Tracer::make(serviceName, tracerConfig);
 ```
 ### link
-jaeger-client-cpp/src/jaegertracing/thrift-gen/zipkincore_types.h
+src/jaegertracing/TracerFactory.cpp
 
 
 ## Blkin
@@ -109,7 +141,42 @@ blkin/blkin-lib/ztracer.hpp
 
 ## Jaeger
 ```C++
+static std::shared_ptr<opentracing::Tracer>
+    make(const std::string& serviceName,
+         const Config& config,
+         const std::shared_ptr<logging::Logger>& logger,
+         metrics::StatsFactory& statsFactory,
+         int options)
+    {
+        if (serviceName.empty()) {
+            throw std::invalid_argument("no service name provided");
+        }
 
+        if (config.disabled()) {
+            return opentracing::MakeNoopTracer();
+        }
+// example of Config which will be parsed by YAML
+    {
+        constexpr auto kConfigYAML = R"cfg(
+disabled: true
+sampler:
+    type: probabilistic
+    param: 0.001
+reporter:
+    queueSize: 100
+    bufferFlushInterval: 10
+    logSpans: false
+    localAgentHostPort: 127.0.0.1:6831
+headers:
+    jaegerDebugHeader: debug-id
+    jaegerBaggageHeader: baggage
+    TraceContextHeaderName: trace-id
+    traceBaggageHeaderPrefix: "testctx-"
+baggage_restrictions:
+    denyBaggageOnInitializationFailure: false
+    hostPort: 127.0.0.1:5778
+    refreshInterval: 60
+)cfg";
 ```
 ### link
 jaeger-client-cpp/src/jaegertracing/Tracer.h
@@ -135,6 +202,12 @@ blkin/blkin-lib/ztracer.hpp
 
 ## Jaeger
 ```C++
+    template <typename ValueArg>
+    Tag(const std::string& key, ValueArg&& value)
+        : _key(key)
+        , _value(std::forward<ValueArg>(value))
+    {
+    }
 
 ```
 ### link
