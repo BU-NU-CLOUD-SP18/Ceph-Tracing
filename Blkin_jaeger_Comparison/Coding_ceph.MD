@@ -8,3 +8,5 @@
  - cd build
  - make
  - make install 
+
+God compiling takes forever, NVM
