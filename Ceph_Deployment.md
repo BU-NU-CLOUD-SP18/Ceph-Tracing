@@ -1,5 +1,7 @@
 
-##Commands for Deploying Ceph and getting traces
+Configuring Ceph with Blkin
+===============================
+
 
 ssh into VM1 where Ceph is Deployed
 ```console
