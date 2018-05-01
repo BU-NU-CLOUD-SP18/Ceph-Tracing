@@ -38,17 +38,11 @@ Configuring Ceph with Blkin
 
 `lttng create blkin-test`
 
-`
-lttng enable-event --userspace zipkin:timestamp
-`
+`lttng enable-event --userspace zipkin:timestamp`
 
-`
-lttng enable-event --userspace zipkin:keyval
-`
+`lttng enable-event --userspace zipkin:keyval`
 
-`
-lttng start
-`
+`ttng start`
 
 6. Startup Ceph again `OSD=3 MON=3 RGW=1 ../src/vstart.sh -n`
 
