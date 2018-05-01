@@ -200,19 +200,19 @@ Milestones/Deliverables
 The project would be implemented and delivered incrementally at the end
 of each iteration
 
-1.  Compilation of the project proposal
+1.  Compilation of the project proposal.
 
 2.  Showing traces using Blkin (making instances in OpenStack
     environment, Deploying Ceph on instances in OpenStack, Compiling
-    Blkin for Ceph, Running Ceph with Blkin)
+    Blkin for Ceph, Running Ceph with Blkin.)
 
 3.  Understanding the Blkin architecture, replacement of Blkin with
-    Jaeger
+    Jaeger.
 
-4.  Presenting the plan and starting replacing Blkin with Jaeger
+4.  Presenting the plan and starting replacing Blkin with Jaeger.
 
 5.  Demonstration of capturing traces using Jaeger, system integration,
-    testing, bug-fixing and user documentation completion
+    testing, bug-fixing and user documentation completion.
 
 
 
