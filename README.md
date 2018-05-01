@@ -49,11 +49,13 @@ lttng enable-event --userspace zipkin:keyval
 `
 lttng start
 `
+
 6. Startup Ceph again `OSD=3 MON=3 RGW=1 ../src/vstart.sh -n`
 
 7. To resume the creation of the Ceph virtual cluster, run this parallely `~/ceph/build/bin/ceph-mgr -i x -c ~/ceph/build/ceph.conf`
 
 8. Now put something in using rados, check that it made it, get it back, and remove it
+
 `./bin/rados mkpool test-blkin`
 
 `./bin/rados put test-object-1 ../src/vstart.sh --pool=test-blkin`
