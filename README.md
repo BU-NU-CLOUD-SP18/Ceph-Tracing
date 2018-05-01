@@ -1,5 +1,6 @@
 # Project Proposal: End-to-End Tracing, Ceph Tracing
 
+
 ---
 Authors:
 - Golsana Ghaemi
@@ -20,6 +21,83 @@ https://youtu.be/CyDcG91KZPI
 
 
 
+
+Configuring Ceph with Blkin
+===============================
+
+1. ssh into VM1 where Ceph is Deployed
+`ssh centos@128.31.25.229 -A`
+
+2. Go to the build folder `cd ceph/build`
+
+3. Startup Ceph with desired configurations `OSD=3 MON=3 RGW=1 ../src/vstart.sh -n`
+
+4. Stop Ceph so that the tracepoints can be enabled.: `/home/centos/ceph/src/stop.sh`
+
+5. Start up an Lttng session and enable tracepoints 
+
+`lttng create blkin-test`
+
+`
+lttng enable-event --userspace zipkin:timestamp
+`
+
+`
+lttng enable-event --userspace zipkin:keyval
+`
+
+`
+lttng start
+`
+
+Startup Ceph again
+```console
+OSD=3 MON=3 RGW=1 ../src/vstart.sh -n
+```
+
+Go to a parallel terminal to run this
+```console
+ssh centos@128.31.25.229 -A
+```
+
+```console
+~/ceph/build/bin/ceph-mgr -i x -c ~/ceph/build/ceph.conf
+```
+
+Now put something in using rados, check that it made it, get it back, and remove it
+```console
+./bin/rados mkpool test-blkin
+```
+
+```console
+./bin/rados put test-object-1 ../src/vstart.sh --pool=test-blkin
+```
+
+```console
+./bin/ceph osd map test-blkin test-object-1
+```
+
+```console
+./bin/rados get test-object-1 ./vstart-copy.sh --pool=test-blkin
+```
+
+```console
+md5sum vstart*
+```
+
+```console
+./bin/rados rm test-object-1 --pool=test-blkin
+```
+Now stop Lttng session and see what was collected
+```console
+lttng stop
+```
+
+```console
+lttng view
+```
+
+
 Vision and Goals Of The Project
 ===============================
 
@@ -27,6 +105,8 @@ This project focuses on enabling a strong and open source tracing
 infrastructure for Ceph, a novel open source high-performance
 distributed software storage. The focus of the implementation is to identify the challenges involved in ripping out Blkin's definition of tracing and propagation of Metadata and replacing with Jaeger and identify the feasibility of doing so. If it is feasible, the aim is to replace Blkin tracing infrastructure with Jaeger for enabling an
 "always-on" and open source end-to-end tracing feature for Ceph.
+
+
 
 Users/Personas Of The Project
 =============================
@@ -41,6 +121,8 @@ better understand the infrastructure and keep the system at highest
 efficiency. The users of the system are the administrators operating Ceph who want to
 understand a performance anomaly and understand the scope of the possibility of reducing the performance overhead.
 
+
+
 Scope and Features Of The Project
 =================================
 
@@ -52,6 +134,8 @@ to Ceph, just applicable to that without any open source community
 behind it. For a more sophisticated approach, the project is dedicated
 in introducing Jaeger as a strong and open source tracing infrastructure
 for enabling end-to-end tracing and replacing Blkin with it.
+
+
 
 Solution Concept
 ================
@@ -90,6 +174,8 @@ replaced by Jaeger. The effort is to better study the anomaly,
 steady-state problem, distributed profiling, and resource attribute
 within the system[5].
 
+
+
 Blkin Tracing System
 --------------------
 
@@ -104,6 +190,8 @@ is no specific open source community to work on it independently and
 improve it. So the solution can be replacing Blkin with other efficient
 and open source tracing tool like Jaeger.
 
+
+
 Jaeger Tracing System
 ---------------------
 
@@ -117,6 +205,8 @@ in Jaeger's syntax (format).
 The most important pros of Jaeger is that it is supported by an open
 source community and is improved continuously. It is literally important
 to have such a tracing tool in a live community like Ceph.
+
+
 
 Acceptance Criteria
 ===================
@@ -154,6 +244,8 @@ of each iteration
 
 5.  Demonstration of capturing traces using Jaeger, system integration,
     testing, bug-fixing and user documentation completion
+
+
 
 
 References
