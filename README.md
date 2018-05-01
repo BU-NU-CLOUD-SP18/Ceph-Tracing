@@ -49,53 +49,26 @@ lttng enable-event --userspace zipkin:keyval
 `
 lttng start
 `
+6. Startup Ceph again `OSD=3 MON=3 RGW=1 ../src/vstart.sh -n`
 
-Startup Ceph again
-```console
-OSD=3 MON=3 RGW=1 ../src/vstart.sh -n
-```
+7. To resume the creation of the Ceph virtual cluster, run this parallely `~/ceph/build/bin/ceph-mgr -i x -c ~/ceph/build/ceph.conf`
 
-Go to a parallel terminal to run this
-```console
-ssh centos@128.31.25.229 -A
-```
+8. Now put something in using rados, check that it made it, get it back, and remove it
+`./bin/rados mkpool test-blkin`
 
-```console
-~/ceph/build/bin/ceph-mgr -i x -c ~/ceph/build/ceph.conf
-```
+`./bin/rados put test-object-1 ../src/vstart.sh --pool=test-blkin`
 
-Now put something in using rados, check that it made it, get it back, and remove it
-```console
-./bin/rados mkpool test-blkin
-```
+`./bin/ceph osd map test-blkin test-object-1`
 
-```console
-./bin/rados put test-object-1 ../src/vstart.sh --pool=test-blkin
-```
+`./bin/rados get test-object-1 ./vstart-copy.sh --pool=test-blkin`
 
-```console
-./bin/ceph osd map test-blkin test-object-1
-```
+`md5sum vstart*`
 
-```console
-./bin/rados get test-object-1 ./vstart-copy.sh --pool=test-blkin
-```
+`./bin/rados rm test-object-1 --pool=test-blkin`
 
-```console
-md5sum vstart*
-```
+9. Now stop Lttng session and see what was collected `lttng stop`
 
-```console
-./bin/rados rm test-object-1 --pool=test-blkin
-```
-Now stop Lttng session and see what was collected
-```console
-lttng stop
-```
-
-```console
-lttng view
-```
+10. To view the traces `lttng view`
 
 
 Vision and Goals Of The Project
